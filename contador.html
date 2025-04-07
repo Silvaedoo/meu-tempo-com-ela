@@ -132,7 +132,12 @@ h1 {
 
   gtag('config', 'G-TF37L0V09P');
 </script>
-
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+</script>
  
 </head>
 <body>
