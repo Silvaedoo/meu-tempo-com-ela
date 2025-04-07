@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <title>Tudo no nosso Tempo</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background-image: url(https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/fundo.jpg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       color: white;
       text-shadow: 1px 1px 3px black;
       display: flex;
@@ -19,6 +19,18 @@
       align-items: center;
       min-height: 100vh;
       text-align: center;
+      overflow: hidden;
+    }
+
+    #video-fundo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(60%);
     }
 
     .container {
@@ -46,6 +58,12 @@
   </style>
 </head>
 <body>
+
+  <video autoplay muted loop id="video-fundo">
+    <source src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/fundo.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo em background.
+  </video>
+
   <div class="container">
     <h1>Tudo no nosso Tempo</h1>
 
@@ -71,64 +89,49 @@
   </div>
 
   <script>
-    function calcularDiferenca(dataInicial) {
-      const inicio = new Date(dataInicial);
+    const datas = [
+      new Date("2025-02-20T17:18:00"),
+      new Date("2025-03-15T13:57:00"),
+      new Date("2025-03-23T01:00:00"),
+      new Date("2025-04-06T08:54:00")
+    ];
+
+    function formatarDiferenca(dataInicial) {
       const agora = new Date();
+      let diff = Math.floor((agora - dataInicial) / 60000); // diferença em minutos
 
-      let anos = agora.getFullYear() - inicio.getFullYear();
-      let meses = agora.getMonth() - inicio.getMonth();
-      let dias = agora.getDate() - inicio.getDate();
-      let horas = agora.getHours() - inicio.getHours();
-      let minutos = agora.getMinutes() - inicio.getMinutes();
-
-      if (minutos < 0) {
-        minutos += 60;
-        horas--;
-      }
-
-      if (horas < 0) {
-        horas += 24;
-        dias--;
-      }
-
-      if (dias < 0) {
-        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
-        dias += mesAnterior.getDate();
-        meses--;
-      }
-
-      if (meses < 0) {
-        meses += 12;
-        anos--;
-      }
-
-      const semanas = Math.floor(dias / 7);
-      dias = dias % 7;
+      const minutos = diff % 60;
+      diff = Math.floor(diff / 60);
+      const horas = diff % 24;
+      diff = Math.floor(diff / 24);
+      const dias = diff % 7;
+      diff = Math.floor(diff / 7);
+      const semanas = diff % 4;
+      const meses = Math.floor(diff / 4);
 
       const partes = [];
-      if (anos > 0) partes.push(`${anos} ${anos === 1 ? 'ano' : 'anos'}`);
-      if (meses > 0) partes.push(`${meses} ${meses === 1 ? 'mês' : 'meses'}`);
-      if (semanas > 0) partes.push(`${semanas} ${semanas === 1 ? 'semana' : 'semanas'}`);
-      if (dias > 0) partes.push(`${dias} ${dias === 1 ? 'dia' : 'dias'}`);
-      if (horas > 0) partes.push(`${horas} ${horas === 1 ? 'hora' : 'horas'}`);
-      if (minutos >= 0) partes.push(`${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`);
+      if (meses > 0) partes.push(`${meses} mês${meses > 1 ? 'es' : ''}`);
+      if (semanas > 0) partes.push(`${semanas} semana${semanas > 1 ? 's' : ''}`);
+      if (dias > 0) partes.push(`${dias} dia${dias > 1 ? 's' : ''}`);
+      if (horas > 0) partes.push(`${horas} hora${horas > 1 ? 's' : ''}`);
+      if (minutos > 0 || partes.length === 0) partes.push(`${minutos} minuto${minutos > 1 ? 's' : ''}`);
 
       if (partes.length > 1) {
-        return partes.slice(0, -1).join(', ') + ' e ' + partes[partes.length - 1];
+        const ultima = partes.pop();
+        return partes.join(', ') + ' e ' + ultima;
       } else {
-        return partes[0] || "0 minutos";
+        return partes[0];
       }
     }
 
     function atualizarTempos() {
-      document.getElementById("tempo1").textContent = calcularDiferenca("2025-02-20T17:18:00");
-      document.getElementById("tempo2").textContent = calcularDiferenca("2025-03-15T13:57:00");
-      document.getElementById("tempo3").textContent = calcularDiferenca("2025-03-23T01:00:00");
-      document.getElementById("tempo4").textContent = calcularDiferenca("2025-04-06T08:54:00");
+      for (let i = 0; i < datas.length; i++) {
+        document.getElementById("tempo" + (i + 1)).innerText = formatarDiferenca(datas[i]);
+      }
     }
 
     atualizarTempos();
-    setInterval(atualizarTempos, 60000); // Atualiza a cada 60 segundos
+    setInterval(atualizarTempos, 60000); // atualiza a cada minuto
   </script>
 </body>
 </html>
