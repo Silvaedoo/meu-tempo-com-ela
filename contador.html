@@ -12,37 +12,53 @@
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
+      background: black;
       color: white;
       text-shadow: 1px 1px 3px black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    #video-fundo {
+    video.bg-video {
       position: fixed;
-      top: 0;
-      left: 0;
+      right: 0;
+      bottom: 0;
       min-width: 100%;
       min-height: 100%;
       z-index: -1;
       object-fit: cover;
-      filter: brightness(60%);
     }
 
     .container {
       background-color: rgba(0, 0, 0, 0.0);
-      padding: 40px;
+      padding: 60px 20px;
+      width: 100%;
+      max-width: none;
+      margin: auto;
       border-radius: 15px;
     }
 
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
     .bloco {
-      margin-bottom: 40px;
+      width: 100%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
       font-size: 1.4rem;
       line-height: 2.2rem;
+      text-align: center;
     }
 
     .bloco span.emoji {
@@ -51,40 +67,136 @@
       margin-bottom: 10px;
     }
 
-    h1 {
-      margin-bottom: 160px;
-      font-size: 5rem;
+    .poesia {
+  width: 100%;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-style: italic;
+  line-height: 2rem;
+  white-space: pre-line;
+  text-align: center;
+    }
+
+    .carrossel-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 60px auto;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .carrossel-imagens {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .carrossel-imagens img {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .seta.esquerda {
+      left: 10px;
+    }
+
+    .seta.direita {
+      right: 10px;
     }
   </style>
 </head>
 <body>
-
-  <video autoplay muted loop id="video-fundo">
+  <video autoplay muted loop class="bg-video">
     <source src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/fundo.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo em background.
   </video>
 
   <div class="container">
     <h1>Tudo no nosso Tempo</h1>
 
-    <div class="bloco">
-      <span class="emoji">⏱️</span>
-      A gente começou a se stalquear há <strong id="tempo1">...</strong> 
+    <div class="grid">
+      <div class="bloco">
+        <span class="emoji">⏱️</span>
+        A gente começou a se stalquear há <strong id="tempo1"></strong> 
+      </div>
+
+      <div class="bloco">
+        <span class="emoji">💘</span>
+        Já fazem <strong id="tempo2"></strong> desde que começamos a conversar sério
+      </div>
+
+      <div class="bloco">
+        <span class="emoji">😘</span>
+        Desde o primeiro beijo voaram <strong id="tempo3"></strong> (ou nosso primeiro tudo...)
+      </div>
+
+      <div class="bloco">
+        <span class="emoji">👩🏼‍❤️‍💋‍👨🏽</span>
+        Desde o último abraço se passaram <strong id="tempo4"></strong>. E já quero te ver de novo.
+      </div>
+
+      
     </div>
 
-    <div class="bloco">
-      <span class="emoji">💘</span>
-      Já fazem <strong id="tempo2">...</strong> desde que começamos a conversar sério
+    <div class="poesia">
+      <strong>O primeiro nós</strong>
+
+Pele com pele.
+Sinto seu cheiro.
+Bagunço seu cabelo.
+A gente ama primeiro
+E conversa depois.
+Não como se fôssemos dois.
+Pq a conexão rolou antes, durante e depois.
+Não são simples "amassos".
+
+Seu sorriso nos meus braços.
+Olhar fixo em mim.
+Torcendo que não tenha fim
+E que a vontade não arranque pedaço.
+No encontro não dei espaço
+Te segurei colada em mim.
+Sem começo, meio e fim,
+O encontro foi um curto "durante".
+
+De um dormir e amar constante, 
+De vontade e de pegada...
+Entre mais uma e "fiquei cansada"
+Outro cochilo pra repor.
+
+Como o encontro reflete a escrita, enfim, 
+Essa noite e tarde finita,
+Que foi um "durante" a sós,
+Reflete meu desejo escrito pra nós: 
+Que o romance não tenha fim.
     </div>
 
-    <div class="bloco">
-      <span class="emoji">😘</span>
-      Desde o primeiro beijo voaram <strong id="tempo3">...</strong> (ou nosso primeiro tudo...)
-    </div>
-
-    <div class="bloco">
-      <span class="emoji">👩🏼‍❤️‍💋‍👨🏽</span>
-      Desde o último abraço se passaram <strong id="tempo4">...</strong>. E já quero te ver de novo.
+    <div class="carrossel-container">
+      <button class="seta esquerda" onclick="mover(-1)">&#10094;</button>
+      <div class="carrossel-imagens" id="carrossel">
+        <img src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/c1.jpeg" alt="c1">
+        <img src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/c2.jpeg" alt="c2">
+        <img src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/c3.jpeg" alt="c3">
+        <img src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/c4.jpeg" alt="c4">
+      </div>
+      <button class="seta direita" onclick="mover(1)">&#10095;</button>
     </div>
   </div>
 
@@ -98,7 +210,7 @@
 
     function formatarDiferenca(dataInicial) {
       const agora = new Date();
-      let diff = Math.floor((agora - dataInicial) / 60000); // diferença em minutos
+      let diff = Math.floor((agora - dataInicial) / 60000);
 
       const minutos = diff % 60;
       diff = Math.floor(diff / 60);
@@ -125,13 +237,23 @@
     }
 
     function atualizarTempos() {
-      for (let i = 0; i < datas.length; i++) {
-        document.getElementById("tempo" + (i + 1)).innerText = formatarDiferenca(datas[i]);
-      }
+      document.getElementById("tempo1").textContent = formatarDiferenca(datas[0]);
+      document.getElementById("tempo2").textContent = formatarDiferenca(datas[1]);
+      document.getElementById("tempo3").textContent = formatarDiferenca(datas[2]);
+      document.getElementById("tempo4").textContent = formatarDiferenca(datas[3]);
+      
     }
 
     atualizarTempos();
-    setInterval(atualizarTempos, 60000); // atualiza a cada minuto
+    setInterval(atualizarTempos, 60000);
+
+    let index = 0;
+    function mover(direcao) {
+      const carrossel = document.getElementById('carrossel');
+      const total = carrossel.children.length;
+      index = (index + direcao + total) % total;
+      carrossel.style.transform = `translateX(-${index * 100}%)`;
+    }
   </script>
 </body>
 </html>
