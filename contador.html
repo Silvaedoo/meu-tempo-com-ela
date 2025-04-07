@@ -8,7 +8,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background-image: url(https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/refs/heads/main/fundo.jpg);
+      background-image: url(https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/fundo.jpg);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -51,23 +51,84 @@
 
     <div class="bloco">
       <span class="emoji">⏱️</span>
-      Já fazem <strong>1 mês, 2 semanas, 3 dias, 4 horas e 30 minutos</strong> que você começou a me stalquear
+      Já fazem <strong id="tempo1">...</strong> que você começou a me stalquear
     </div>
 
     <div class="bloco">
       <span class="emoji">💘</span>
-      Já fazem <strong>3 semanas, 1 dia, 7 horas e 51 minutos</strong> desde que começamos a conversar sério
+      Já fazem <strong id="tempo2">...</strong> desde que começamos a conversar sério
     </div>
 
     <div class="bloco">
       <span class="emoji">😘</span>
-      Já fazem <strong>2 semanas, 6 dias, 8 horas e 20 minutos</strong> desde o nosso primeiro beijo
+      Já fazem <strong id="tempo3">...</strong> desde o nosso primeiro beijo
     </div>
 
     <div class="bloco">
       <span class="emoji">👩🏼‍❤️‍💋‍👨🏽</span>
-      Já fazem <strong>1 dia, 14 horas e 50 minutos</strong> desde o nosso último encontro
+      Já fazem <strong id="tempo4">...</strong> desde o nosso último encontro
     </div>
   </div>
+
+  <script>
+    function calcularDiferenca(dataInicial) {
+      const inicio = new Date(dataInicial);
+      const agora = new Date();
+
+      let anos = agora.getFullYear() - inicio.getFullYear();
+      let meses = agora.getMonth() - inicio.getMonth();
+      let dias = agora.getDate() - inicio.getDate();
+      let horas = agora.getHours() - inicio.getHours();
+      let minutos = agora.getMinutes() - inicio.getMinutes();
+
+      if (minutos < 0) {
+        minutos += 60;
+        horas--;
+      }
+
+      if (horas < 0) {
+        horas += 24;
+        dias--;
+      }
+
+      if (dias < 0) {
+        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+        dias += mesAnterior.getDate();
+        meses--;
+      }
+
+      if (meses < 0) {
+        meses += 12;
+        anos--;
+      }
+
+      const semanas = Math.floor(dias / 7);
+      dias = dias % 7;
+
+      const partes = [];
+      if (anos > 0) partes.push(`${anos} ${anos === 1 ? 'ano' : 'anos'}`);
+      if (meses > 0) partes.push(`${meses} ${meses === 1 ? 'mês' : 'meses'}`);
+      if (semanas > 0) partes.push(`${semanas} ${semanas === 1 ? 'semana' : 'semanas'}`);
+      if (dias > 0) partes.push(`${dias} ${dias === 1 ? 'dia' : 'dias'}`);
+      if (horas > 0) partes.push(`${horas} ${horas === 1 ? 'hora' : 'horas'}`);
+      if (minutos >= 0) partes.push(`${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`);
+
+      if (partes.length > 1) {
+        return partes.slice(0, -1).join(', ') + ' e ' + partes[partes.length - 1];
+      } else {
+        return partes[0] || "0 minutos";
+      }
+    }
+
+    function atualizarTempos() {
+      document.getElementById("tempo1").textContent = calcularDiferenca("2025-02-20T17:18:00");
+      document.getElementById("tempo2").textContent = calcularDiferenca("2025-03-15T13:57:00");
+      document.getElementById("tempo3").textContent = calcularDiferenca("2025-03-23T01:00:00");
+      document.getElementById("tempo4").textContent = calcularDiferenca("2025-04-06T08:54:00");
+    }
+
+    atualizarTempos();
+    setInterval(atualizarTempos, 60000); // Atualiza a cada 60 segundos
+  </script>
 </body>
 </html>
