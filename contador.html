@@ -94,48 +94,47 @@ h1 {
   font-size: 2rem;
 }
 
-    .carrossel-poesias-amor {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: auto;
-}
+    .carrossel-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 60px auto;
+      overflow: hidden;
+      border-radius: 15px;
+    }
 
-.carrossel-poesias-amor .poesia {
-  max-width: 600px;
-  padding: 20px;
-  text-align: center;
-  color: white;
-}
+    .carrossel-imagens {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
 
-.carrossel-poesias-amor .seta {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 24px;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
+    .carrossel-imagens img {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
 
-.carrossel-poesias-amor .seta:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+    .seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
 
-.carrossel-poesias-amor .seta.esquerda {
-  left: -40px;
-}
+    .seta.esquerda {
+      left: 10px;
+    }
 
-.carrossel-poesias-amor .seta.direita {
-  right: -40px;
-}
-
+    .seta.direita {
+      right: 10px;
+    }
   </style>
 
 <!-- Google tag (gtag.js) -->
@@ -193,7 +192,7 @@ h1 {
     </div>
 
    <div class="carrossel-poesia-container">
-  <button class="seta esquerda" onclick="mover(-1)">&#10094;</button>
+  <button class="seta-poesia esquerda" onclick="moverPoesiaNos(-1)">&#10094;</button>
 
   <div class="carrossel-poesias-amor" id="carrosselNos">
     <div class="poesia">
@@ -241,7 +240,7 @@ h1 {
     <!-- Adicione mais poesias como novas divs .poesia aqui -->
   </div>
 
- <button class="seta direita" onclick="mover(1)">&#10095;</button>
+  <button class="seta-poesia direita" onclick="moverPoesiaNos(1)">&#10095;</button>
 </div>
 
 <script>
