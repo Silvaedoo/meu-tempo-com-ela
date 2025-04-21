@@ -66,18 +66,33 @@ h1 {
   margin-bottom: 10px;
 }
 
-.poesia {
+.carrossel-poesia-container {
+  position: relative;
   width: 100%;
   max-width: 800px;
   margin: 60px auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carrossel-poesias-amor {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carrossel-poesias-amor .poesia {
+  width: 100%;
+  flex-shrink: 0;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   font-style: italic;
-  line-height: 4rem; /* dobrado de 2rem */
+  line-height: 4rem;
   white-space: pre-line;
   text-align: center;
-  font-size: 2rem; /* adicionado para dobrar (1rem padrão * 2) */
+  font-size: 2rem;
+}
 }
 
     .carrossel-container {
@@ -177,38 +192,68 @@ h1 {
       
     </div>
 
+   <div class="carrossel-poesia-container">
+  <button class="seta-poesia esquerda" onclick="moverPoesiaNos(-1)">&#10094;</button>
+
+  <div class="carrossel-poesias-amor" id="carrosselNos">
     <div class="poesia">
-      <strong>O primeiro nós</strong>
+      <strong>O primeiro nós</strong><br><br>
 
-Pele com pele.
-Sinto seu cheiro.
-Bagunço seu cabelo.
-A gente ama primeiro
-E conversa depois.
-Não como se fôssemos dois.
-Pq a conexão rolou antes, durante e depois.
-Não são simples "amassos".
+      Pele com pele.  
+      Sinto seu cheiro.  
+      Bagunço seu cabelo.  
+      A gente ama primeiro  
+      E conversa depois.  
+      Não como se fôssemos dois.  
+      Pq a conexão rolou antes, durante e depois.  
+      Não são simples "amassos".<br><br>
 
-Seu sorriso nos meus braços.
-Olhar fixo em mim.
-Torcendo que não tenha fim
-E que a vontade não arranque pedaço.
-No encontro não dei espaço
-Te segurei colada em mim.
-Sem começo, meio e fim,
-O encontro foi um curto "durante".
+      Seu sorriso nos meus braços.  
+      Olhar fixo em mim.  
+      Torcendo que não tenha fim  
+      E que a vontade não arranque pedaço.  
+      No encontro não dei espaço  
+      Te segurei colada em mim.  
+      Sem começo, meio e fim,  
+      O encontro foi um curto "durante".<br><br>
 
-De um dormir e amar constante, 
-De vontade e de pegada...
-Entre mais uma e "fiquei cansada"
-Outro cochilo pra repor.
+      De um dormir e amar constante,  
+      De vontade e de pegada...  
+      Entre mais uma e "fiquei cansada"  
+      Outro cochilo pra repor.<br><br>
 
-Como o encontro reflete a escrita, enfim, 
-Essa noite e tarde finita,
-Que foi um "durante" a sós,
-Reflete meu desejo escrito pra nós: 
-Que o romance não tenha fim.
+      Como o encontro reflete a escrita, enfim,  
+      Essa noite e tarde finita,  
+      Que foi um "durante" a sós,  
+      Reflete meu desejo escrito pra nós:  
+      Que o romance não tenha fim.
     </div>
+
+    <div class="poesia">
+      <strong>Outra poesia aqui</strong><br><br>
+
+      Pode colar sua nova poesia aqui.  
+      A estrutura é a mesma:  
+      Versos com quebras de linha  
+      E o sentimento no centro da tela.
+    </div>
+
+    <!-- Adicione mais poesias como novas divs .poesia aqui -->
+  </div>
+
+  <button class="seta-poesia direita" onclick="moverPoesiaNos(1)">&#10095;</button>
+</div>
+
+<script>
+  let poesiaIndexNos = 0;
+  function moverPoesiaNos(direcao) {
+    const carrossel = document.getElementById('carrosselNos');
+    const total = carrossel.children.length;
+    poesiaIndexNos = (poesiaIndexNos + direcao + total) % total;
+    carrossel.style.transform = `translateX(-${poesiaIndexNos * 100}%)`;
+  }
+</script>
+
 
     <div class="carrossel-container">
       <button class="seta esquerda" onclick="mover(-1)">&#10094;</button>
