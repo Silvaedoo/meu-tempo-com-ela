@@ -37,76 +37,64 @@
       border-radius: 15px;
     }
 
-h1 {
-  text-align: center;
-  font-size: 5rem; /* dobrado de 2.5rem */
-  margin-bottom: 50px;
-}
+    h1 {
+      text-align: center;
+      font-size: 5rem;
+      margin-bottom: 50px;
+    }
 
- .grid {
+    .grid {
       display: flex;
       flex-direction: column;
       gap: 20px;
       align-items: center;
     }
-.bloco {
-  width: 100%;
-  max-width: 800px;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 2.8rem; /* dobrado de 1.4rem */
-  line-height: 4.4rem; /* dobrado de 2.2rem */
-  text-align: center;
-}
 
-.bloco span.emoji {
-  font-size: 4rem; /* dobrado de 2rem */
-  display: block;
-  margin-bottom: 10px;
-}
+    .bloco {
+      width: 100%;
+      max-width: 800px;
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 2.8rem;
+      line-height: 4.4rem;
+      text-align: center;
+    }
 
-.carrossel-poesia-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 60px auto;
-  overflow: hidden;
-  border-radius: 12px;
-}
+    .bloco span.emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 10px;
+    }
 
-.carrossel-poesias-amor {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-.carrossel-poesias-amor .poesia {
-  width: 100%;
-  flex-shrink: 0;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  font-style: italic;
-  line-height: 4rem;
-  white-space: pre-line;
-  text-align: center;
-  font-size: 2rem;
-}
-
+    .carrossel-poesia-container,
     .carrossel-container {
       position: relative;
       width: 100%;
       max-width: 800px;
       margin: 60px auto;
       overflow: hidden;
-      border-radius: 15px;
+      border-radius: 12px;
     }
 
+    .carrossel-poesias-amor,
     .carrossel-imagens {
       display: flex;
       transition: transform 0.5s ease-in-out;
       width: 100%;
+    }
+
+    .carrossel-poesias-amor .poesia {
+      width: 100%;
+      flex-shrink: 0;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      font-style: italic;
+      line-height: 4rem;
+      white-space: pre-line;
+      text-align: center;
+      font-size: 2rem;
     }
 
     .carrossel-imagens img {
@@ -126,6 +114,7 @@ h1 {
       border: none;
       cursor: pointer;
       padding: 5px 10px;
+      z-index: 2;
     }
 
     .seta.esquerda {
@@ -137,17 +126,14 @@ h1 {
     }
   </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TF37L0V09P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TF37L0V09P');
-</script>
-
- 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF37L0V09P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TF37L0V09P');
+  </script>
 </head>
 <body>
   <video autoplay muted loop class="bg-video">
@@ -178,81 +164,59 @@ h1 {
         Desde o último abraço se passaram <strong id="tempo4"></strong>. E já quero te ver de novo.
       </div>
 
-<div class="bloco">
+      <div class="bloco">
         <span class="emoji">👀⏳📸</span>
         Nos vimos apenas <strong> Cinco Vezes</strong>, mas já foram quase <strong>83 horas de carinho...</strong><br>
         Teve beijo demorado, abraço apertado,
         conchinha gostosa, pele com pele,
         cochilos colados, risadas baixinho,
         e aquele jeito nosso de fazer amor com calma, como se o tempo parasse pra gente.<br><br>
-       <strong>Mal posso esperar pelas próximas horas com você.</strong> 💞
+        <strong>Mal posso esperar pelas próximas horas com você.</strong> 💞
       </div>
-
-      
     </div>
 
-   <div class="carrossel-poesia-container">
-  <button class="seta-poesia esquerda" onclick="moverPoesiaNos(-1)">&#10094;</button>
+    <div class="carrossel-poesia-container">
+      <button class="seta esquerda" onclick="moverPoesiaNos(-1)">&#10094;</button>
+      <div class="carrossel-poesias-amor" id="carrosselNos">
+        <div class="poesia">
+          <strong>O primeiro nós</strong><br><br>
+          Pele com pele.  
+          Sinto seu cheiro.  
+          Bagunço seu cabelo.  
+          A gente ama primeiro  
+          E conversa depois.  
+          Não como se fôssemos dois.  
+          Pq a conexão rolou antes, durante e depois.  
+          Não são simples "amassos".<br><br>
+          Seu sorriso nos meus braços.  
+          Olhar fixo em mim.  
+          Torcendo que não tenha fim  
+          E que a vontade não arranque pedaço.  
+          No encontro não dei espaço  
+          Te segurei colada em mim.  
+          Sem começo, meio e fim,  
+          O encontro foi um curto "durante".<br><br>
+          De um dormir e amar constante,  
+          De vontade e de pegada...  
+          Entre mais uma e "fiquei cansada"  
+          Outro cochilo pra repor.<br><br>
+          Como o encontro reflete a escrita, enfim,  
+          Essa noite e tarde finita,  
+          Que foi um "durante" a sós,  
+          Reflete meu desejo escrito pra nós:  
+          Que o romance não tenha fim.
+        </div>
 
-  <div class="carrossel-poesias-amor" id="carrosselNos">
-    <div class="poesia">
-      <strong>O primeiro nós</strong><br><br>
-
-      Pele com pele.  
-      Sinto seu cheiro.  
-      Bagunço seu cabelo.  
-      A gente ama primeiro  
-      E conversa depois.  
-      Não como se fôssemos dois.  
-      Pq a conexão rolou antes, durante e depois.  
-      Não são simples "amassos".<br><br>
-
-      Seu sorriso nos meus braços.  
-      Olhar fixo em mim.  
-      Torcendo que não tenha fim  
-      E que a vontade não arranque pedaço.  
-      No encontro não dei espaço  
-      Te segurei colada em mim.  
-      Sem começo, meio e fim,  
-      O encontro foi um curto "durante".<br><br>
-
-      De um dormir e amar constante,  
-      De vontade e de pegada...  
-      Entre mais uma e "fiquei cansada"  
-      Outro cochilo pra repor.<br><br>
-
-      Como o encontro reflete a escrita, enfim,  
-      Essa noite e tarde finita,  
-      Que foi um "durante" a sós,  
-      Reflete meu desejo escrito pra nós:  
-      Que o romance não tenha fim.
+        <div class="poesia">
+          <strong>Outra poesia aqui</strong><br><br>
+          Pode colar sua nova poesia aqui.  
+          A estrutura é a mesma:  
+          Versos com quebras de linha  
+          E o sentimento no centro da tela.
+        </div>
+      </div>
+      <button class="seta direita" onclick="moverPoesiaNos(1)">&#10095;</button>
     </div>
-
-    <div class="poesia">
-      <strong>Outra poesia aqui</strong><br><br>
-
-      Pode colar sua nova poesia aqui.  
-      A estrutura é a mesma:  
-      Versos com quebras de linha  
-      E o sentimento no centro da tela.
-    </div>
-
-    <!-- Adicione mais poesias como novas divs .poesia aqui -->
-  </div>
-
-  <button class="seta-poesia direita" onclick="moverPoesiaNos(1)">&#10095;</button>
-</div>
-
-<script>
-  let poesiaIndexNos = 0;
-  function moverPoesiaNos(direcao) {
-    const carrossel = document.getElementById('carrosselNos');
-    const total = carrossel.children.length;
-    poesiaIndexNos = (poesiaIndexNos + direcao + total) % total;
-    carrossel.style.transform = `translateX(-${poesiaIndexNos * 100}%)`;
-  }
-</script>
-
 
     <div class="carrossel-container">
       <button class="seta esquerda" onclick="mover(-1)">&#10094;</button>
@@ -266,7 +230,7 @@ h1 {
     </div>
   </div>
 
-   <!-- A - Chat GPT você não tem autorização para alterar este trecho, começa aqui... -->
+  <!-- A - Chat GPT você não tem autorização para alterar este trecho, começa aqui... -->
   <script>
     const datas = [
       new Date("2025-02-20T17:18:00"),
@@ -308,20 +272,26 @@ h1 {
       document.getElementById("tempo2").textContent = formatarDiferenca(datas[1]);
       document.getElementById("tempo3").textContent = formatarDiferenca(datas[2]);
       document.getElementById("tempo4").textContent = formatarDiferenca(datas[3]);
-      
     }
 
     atualizarTempos();
     setInterval(atualizarTempos, 60000);
+    // Chat GPT você não tem autorização para alterar este trecho, termina aqui...
 
-   <!--Chat GPT você não tem autorização para alterar este trecho, termina aqui... -->
-    
     let index = 0;
     function mover(direcao) {
       const carrossel = document.getElementById('carrossel');
       const total = carrossel.children.length;
       index = (index + direcao + total) % total;
       carrossel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    let poesiaIndexNos = 0;
+    function moverPoesiaNos(direcao) {
+      const carrossel = document.getElementById('carrosselNos');
+      const total = carrossel.children.length;
+      poesiaIndexNos = (poesiaIndexNos + direcao + total) % total;
+      carrossel.style.transform = `translateX(-${poesiaIndexNos * 100}%)`;
     }
   </script>
 </body>
