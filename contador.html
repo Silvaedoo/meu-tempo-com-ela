@@ -71,35 +71,34 @@
  /* fim do Bloco dos contadores */  
  /* aqui começa o carrossel das poesias */
     
-   .carrossel-poesia-container,
-.carrossel-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 60px auto; /* Corrigido aqui */
-  overflow: hidden;
-  border-radius: 12px;
-}
+    .carrossel-poesia-container,
+    .carrossel-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 60px auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
 
-.carrossel-encontros-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 30px auto; /* Reduzido o espaçamento */
-  overflow: hidden;
-  border-radius: 12px;
-}
+    .carrossel-poesias-amor,
+    .carrossel-imagens {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
 
-.card {
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 20px;
-  box-sizing: border-box;
-
+    .carrossel-poesias-amor .poesia {
+      width: 100%;
+      flex-shrink: 0;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      font-style: italic;
+      line-height: 4rem;
+      white-space: pre-line;
+      text-align: center;
+      font-size: 1.5rem;
     }
     
 /* fim do carrossel de poesia */
