@@ -134,33 +134,45 @@
 /* fim do carrossel de imagens */
 /* aqui começa o carrossel dos encontros */
 
+.carrossel-encontros-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 60px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.1); /* mesma cor da poesia */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Mantém o layout de rolagem horizontal */
 .carrossel-encontros {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
 
-  .card {
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-  }
+/* Cada card de encontro */
+.card {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  box-sizing: border-box;
+}
 
-  .card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-
-  .card p {
-    font-size: 1.6rem;
-    padding: 0 10px;
-  }
-
-.carrossel-encontros img {
+/* Estilo das imagens */
+.card img {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+/* Estilo do parágrafo */
+.card p {
+  font-size: 1.6rem;
+  padding: 0 10px;
 }
     
 /* fim do carrossel dos encontros */
