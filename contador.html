@@ -479,7 +479,7 @@ Na manhã do dia 20, começamos o café à mesa e terminamos na sacada, olhando 
       const meses = Math.floor(diff / 4);
 
       const partes = [];
-      if (meses > 0) partes.push(`${meses} mês${meses > 1 ? 'es' : ''}`);
+      if (meses > 0) partes.push(`${meses} ${meses === 1 ? 'mês' : 'meses'}`)
       if (semanas > 0) partes.push(`${semanas} semana${semanas > 1 ? 's' : ''}`);
       if (dias > 0) partes.push(`${dias} dia${dias > 1 ? 's' : ''}`);
       if (horas > 0) partes.push(`${horas} hora${horas > 1 ? 's' : ''}`);
