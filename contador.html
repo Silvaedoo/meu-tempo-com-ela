@@ -194,7 +194,11 @@
   <audio autoplay loop>
     <source src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/Audio.mp3" type="audio/mpeg">
       </audio>
-  
+  <!-- trecho que marca a ultima atualização -->
+<footer style="text-align: center; padding: 20px; color: #aaa; font-size: 0.9rem;">
+  Atualizado em: <span id="dataAtualizacao"></span>
+</footer>
+
   <video autoplay muted loop class="bg-video">
     <source src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/fundo.mp4" type="video/mp4">
   </video>
@@ -554,6 +558,15 @@ Na manhã do dia 20, começamos o café à mesa e terminamos na sacada, olhando 
 
     atualizarTempos();
     setInterval(atualizarTempos, 60000);
+// trecho que atualiza quando foi atualizado a ultima vez
+function exibirDataAtualizacao() {
+  const agora = new Date();
+  const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+  const formatado = agora.toLocaleString('pt-BR', opcoes).replace(',', ' às');
+  document.getElementById("dataAtualizacao").textContent = formatado;
+}
+
+exibirDataAtualizacao();
     // Chat GPT você não tem autorização para alterar este trecho, termina aqui...
 
     let index = 0;
