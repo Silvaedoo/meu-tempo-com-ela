@@ -132,81 +132,77 @@
       right: 10px;
     }
 /* fim do carrossel de imagens */
-/* === CARROSSEL DOS ENCONTROS === */
+ /* === CARROSSEL DOS ENCONTROS === */
+    .carrossel-encontros-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 60px auto;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #222; /* fundo escuro para destacar texto */
+    }
 
-.carrossel-encontros-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 60px auto;
-  overflow: hidden;
-  border-radius: 12px;
-}
+    .carrossel-encontros {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
 
-/* Faixa que contém todos os cards */
-.carrossel-encontros {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: max-content; /* Permite que os cards fiquem em linha */
-}
+    .card {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      color: white;
+    }
 
-/* Cada card individual do carrossel */
-.card {
-  flex: 0 0 100%; /* Cada card ocupa 100% da largura do contêiner visível */
-  max-width: 100%;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente visível */
-  border-radius: 12px;
-  padding: 20px;
-  box-sizing: border-box;
-}
+    .card img,
+    .card video {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-height: 450px;
+      object-fit: cover;
+    }
 
-/* Imagens e vídeos dentro do card */
-.card img,
-.card video {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  max-height: 450px; /* Limita altura para vídeos grandes */
-  object-fit: cover;
-}
+    .card p {
+      font-size: 1.6rem;
+      padding: 0 10px;
+      line-height: 1.6;
+    }
 
-/* Texto dentro do card */
-.card p {
-  font-size: 1.6rem;
-  padding: 0 10px;
-  color: #fff; /* Adicione cor se o fundo for escuro */
-  line-height: 1.6;
-}
+    .seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 24px;
+      border-radius: 50%;
+      z-index: 10;
+      transition: background-color 0.3s ease;
+    }
 
-/* Setas do carrossel */
-.seta {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.4);
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: 24px;
-  border-radius: 50%;
-  z-index: 10;
-  transition: background-color 0.3s ease;
-}
+    .seta:hover {
+      background-color: rgba(0,0,0,0.6);
+    }
 
-.seta:hover {
-  background-color: rgba(0,0,0,0.6);
-}
+    .seta.esquerda {
+      left: 10px;
+    }
 
-.seta.esquerda {
-  left: 10px;
-}
-
-.seta.direita {
-  right: 10px;
-}
-
+    .seta.direita {
+      right: 10px;
+    }
+  
 /* === FIM DO CARROSSEL DOS ENCONTROS === */
 </style>
 
@@ -513,11 +509,11 @@
 </div>
 
 
-<div class="carrossel-container">
+<div class="carrossel-encontros-container">
     <button class="seta esquerda" onclick="moverImagemTexto(-1)">&#10094;</button>
+  
     <div class="carrossel-encontros" id="carrosselImagemTexto">
-     
-      <div class="card">
+        <div class="card">
         <video src="https://raw.githubusercontent.com/Silvaedoo/meu-tempo-com-ela/main/c6.mp4" controls width="100%">
           Seu navegador não suporta a reprodução de vídeo.
         </video>
