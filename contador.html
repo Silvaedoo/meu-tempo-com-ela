@@ -103,49 +103,51 @@
     
 /* fim do carrossel de poesia */
 /* aqui começa o carrossel dos encontros */
+    
+    .carrossel-encontros-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 60px auto;
+      overflow: hidden;
+      border-radius: 12px;
+    
+    }
+    
+    /* Mantém o layout de rolagem horizontal */
+    .carrossel-encontros {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+    
+    /* Cada card de encontro */
+    .card {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.1); /* fundo visível */
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    /* Estilo das imagens */
+    .card img, 
+    .card video {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    
+    /* Estilo do parágrafo */
+    .card p {
+      font-size: 1.6rem;
+      padding: 0 20px;
+    }
 
-.carrossel-encontros-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 60px auto;
-  overflow: hidden;
-  border-radius: 12px;
-
-}
-
-/* Mantém o layout de rolagem horizontal */
-.carrossel-encontros {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-/* Cada card de encontro */
-.card {
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.1); /* fundo visível */
-  border-radius: 12px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* Estilo das imagens */
-.card img,
-.card video{
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* Estilo do parágrafo */
-.card p {
-  font-size: 1.6rem;
-  padding: 0 10px;
-}
+/* fim do carrossel dos encontros */
 
 /* fim do carrossel dos encontros */
 </style>
