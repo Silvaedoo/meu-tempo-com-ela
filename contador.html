@@ -132,78 +132,52 @@
       right: 10px;
     }
 /* fim do carrossel de imagens */
- /* === CARROSSEL DOS ENCONTROS === */
-    .carrossel-encontros-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 60px auto;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #222; /* fundo escuro para destacar texto */
-    }
+* aqui começa o carrossel dos encontros */
 
-    .carrossel-encontros {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100%;
-    }
+.carrossel-encontros-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 60px auto;
+  overflow: hidden;
+  border-radius: 12px;
 
-    .card {
-      flex-shrink: 0;
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-      color: white;
-    }
+}
 
-    .card img,
-    .card video {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      max-height: 450px;
-      object-fit: cover;
-    }
+/* Mantém o layout de rolagem horizontal */
+.carrossel-encontros {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
 
-    .card p {
-      font-size: 1.6rem;
-      padding: 0 10px;
-      line-height: 1.6;
-    }
+/* Cada card de encontro */
+.card {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1); /* fundo visível */
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-    .seta {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0,0,0,0.4);
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-size: 24px;
-      border-radius: 50%;
-      z-index: 10;
-      transition: background-color 0.3s ease;
-    }
+/* Estilo das imagens */
+.card img,
+.card video {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
 
-    .seta:hover {
-      background-color: rgba(0,0,0,0.6);
-    }
+/* Estilo do parágrafo */
+.card p {
+  font-size: 1.6rem;
+  padding: 0 10px;
+}
 
-    .seta.esquerda {
-      left: 10px;
-    }
-
-    .seta.direita {
-      right: 10px;
-    }
-  
-/* === FIM DO CARROSSEL DOS ENCONTROS === */
+/* fim do carrossel dos encontros */
 </style>
 
   <!-- Google tag (gtag.js) -->
