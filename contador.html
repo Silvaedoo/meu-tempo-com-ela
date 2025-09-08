@@ -649,13 +649,13 @@
       carrossel.style.transform = `translateX(-${poesiaIndexNos * 100}%)`;
     }
 
-  let imagemTextoIndex = 0;
+    let imagemTextoIndex = 0;
   function moverImagemTexto(direcao) {
     const carrossel = document.getElementById('carrosselImagemTexto');
     const total = carrossel.children.length;
     imagemTextoIndex = (imagemTextoIndex + direcao + total) % total;
     carrossel.style.transform = `translateX(-${imagemTextoIndex * 100}%)`;
-   }
+    }
   </script>
 </body>
 </html>
