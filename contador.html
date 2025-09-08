@@ -147,14 +147,13 @@
 .carrossel-encontros {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 100%;
+  width: max-content; /* Permite que os cards fiquem em linha */
 }
 
 /* Cada card individual do carrossel */
 .card {
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 800px;
+  flex: 0 0 100%; /* Cada card ocupa 100% da largura do contêiner visível */
+  max-width: 100%;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente visível */
   border-radius: 12px;
@@ -179,7 +178,8 @@
   color: #fff; /* Adicione cor se o fundo for escuro */
   line-height: 1.6;
 }
-/* Setas dentro do card */
+
+/* Setas do carrossel */
 .seta {
   position: absolute;
   top: 50%;
@@ -659,15 +659,7 @@
 
     atualizarTempos();
     setInterval(atualizarTempos, 60000);
-// trecho que atualiza quando foi atualizado a ultima vez
-function exibirDataAtualizacao() {
-  const agora = new Date();
-  const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-  const formatado = agora.toLocaleString('pt-BR', opcoes).replace(',', ' às');
-  document.getElementById("dataAtualizacao").textContent = formatado;
-}
 
-exibirDataAtualizacao();
     // Chat GPT você não tem autorização para alterar este trecho, termina aqui...
 
     let index = 0;
@@ -686,13 +678,13 @@ exibirDataAtualizacao();
       carrossel.style.transform = `translateX(-${poesiaIndexNos * 100}%)`;
     }
 
-    let imagemTextoIndex = 0;
+  let imagemTextoIndex = 0;
   function moverImagemTexto(direcao) {
     const carrossel = document.getElementById('carrosselImagemTexto');
     const total = carrossel.children.length;
     imagemTextoIndex = (imagemTextoIndex + direcao + total) % total;
     carrossel.style.transform = `translateX(-${imagemTextoIndex * 100}%)`;
-    }
+   }
   </script>
 </body>
 </html>
