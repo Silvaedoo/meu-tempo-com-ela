@@ -683,33 +683,74 @@
   <!-- A - Chat GPT você não tem autorização para alterar este trecho, ele começa aqui... -->
   <script>
     const datas = [
-      new Date("2025-02-20T17:18:00"),
-      new Date("2025-03-15T13:57:00"),
-      new Date("2025-03-23T01:00:00"),
-      new Date("2025-06-16T22:00:00"),
-      new Date("2025-09-03T16:00:00"),
+      new Date("2025-02-20T17:18:00"), // tempo1: A gente começou a se stalquear
+      new Date("2025-03-15T13:57:00"), // tempo2: Já fazem desde que começamos a conversar sério
+      new Date("2025-03-23T01:00:00"), // tempo3: Desde o primeiro beijo
+      new Date("2025-05-16T22:00:00"), // tempo5: Já fazem desde que começamos a Namorar
+      new Date("2025-09-03T16:00:00")  // tempo4: Desde o último abraço
     ];
 
     function formatarDiferenca(dataInicial) {
       const agora = new Date();
-      let diff = Math.floor((agora - dataInicial) / 60000);
+      let anos = agora.getFullYear() - dataInicial.getFullYear();
+      let meses = agora.getMonth() - dataInicial.getMonth();
+      let dias = agora.getDate() - dataInicial.getDate();
+      let horas = agora.getHours() - dataInicial.getHours();
+      let minutos = agora.getMinutes() - dataInicial.getMinutes();
 
-      const minutos = diff % 60;
-      diff = Math.floor(diff / 60);
-      const horas = diff % 24;
-      diff = Math.floor(diff / 24);
-      const dias = diff % 7;
-      diff = Math.floor(diff / 7);
-      const semanas = diff % 4;
-      const meses = Math.floor(diff / 4);
+      // Ajusta minutos
+      if (minutos < 0) {
+        minutos += 60;
+        horas--;
+      }
+
+      // Ajusta horas
+      if (horas < 0) {
+        horas += 24;
+        dias--;
+      }
+
+      // Ajusta dias
+      if (dias < 0) {
+        // Calcula o último dia do mês anterior ao mês atual
+        const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+        dias += ultimoDiaMesAnterior;
+        meses--;
+      }
+
+      // Ajusta meses
+      if (meses < 0) {
+        meses += 12;
+        anos--;
+      }
 
       const partes = [];
-      if (meses > 0) partes.push(`${meses} ${meses === 1 ? 'mês' : 'meses'}`);
-      if (semanas > 0) partes.push(`${semanas} semana${semanas > 1 ? 's' : ''}`);
-      if (dias > 0) partes.push(`${dias} dia${dias > 1 ? 's' : ''}`);
-      if (horas > 0) partes.push(`${horas} hora${horas > 1 ? 's' : ''}`);
-      if (minutos > 0 || partes.length === 0) partes.push(`${minutos} minuto${minutos > 1 ? 's' : ''}`);
 
+      // Adiciona anos, meses, dias, horas, minutos apenas se forem maiores que zero
+      // ou se for a unidade mais significativa e as outras forem zero.
+      if (anos > 0) {
+        partes.push(`${anos} ano${anos > 1 ? 's' : ''}`);
+      }
+      // Condição para "mes" ou "meses" sem acento
+      if (meses > 0) {
+        partes.push(`${meses} mes${meses > 1 ? 'es' : ''}`);
+      }
+      if (dias > 0) {
+        partes.push(`${dias} dia${dias > 1 ? 's' : ''}`);
+      }
+      if (horas > 0) {
+        partes.push(`${horas} hora${horas > 1 ? 's' : ''}`);
+      }
+      if (minutos > 0) {
+        partes.push(`${minutos} minuto${minutos > 1 ? 's' : ''}`);
+      }
+
+      // Se todas as partes forem zero (diferença muito pequena), exibe "0 minutos"
+      if (partes.length === 0) {
+        return "0 minutos";
+      }
+
+      // Formata a string final
       if (partes.length > 1) {
         const ultima = partes.pop();
         return partes.join(', ') + ' e ' + ultima;
